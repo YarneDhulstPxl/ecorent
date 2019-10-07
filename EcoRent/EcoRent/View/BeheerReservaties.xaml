@@ -1,0 +1,77 @@
+﻿<Window x:Class="EcoRent.View.BeheerReservaties"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EcoRent.View"
+        mc:Ignorable="d"
+        xmlns:viewmodel="clr-namespace:EcoRent.ViewModel"
+        Title="Beheer reservaties" Height="450" Width="800" Icon="/Resources/icon.png">
+    
+    <Window.Resources>
+        <viewmodel:ReservatieViewModel x:Key="ReservatieViewModel"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource ReservatieViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="550" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100*" />
+        </Grid.ColumnDefinitions>
+
+
+
+        <ListView Grid.Column="0" 
+                  ItemsSource="{Binding Reservaties}" 
+                  SelectionMode="Single" 
+                  SelectedItem="{Binding CurrentReservatie}" Margin="0,0,10.4,0" Grid.RowSpan="2">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Width="100" 
+                                    Header="ReservatieID"  
+                                    DisplayMemberBinding="{Binding ReservatieID}"  ToolTipService.ToolTip  =  "Reservatie Id" />
+                    <GridViewColumn Width="120" 
+                                    Header="BeginDatum"
+                                    DisplayMemberBinding="{Binding BeginDatum}" ToolTipService.ToolTip  =  "Begin datum" />
+                    <GridViewColumn Width="120" 
+                                    Header="EindDatum"
+                                    DisplayMemberBinding="{Binding EindDatum}" ToolTipService.ToolTip  =  "Eind datum" />
+                    <GridViewColumn Width="100" 
+                                    Header="AutoID"
+                                    DisplayMemberBinding="{Binding AutoID}" ToolTipService.ToolTip  =  "Auto Id"  />
+                    <GridViewColumn Width="100" 
+                                    Header="ChauffeurID"
+                                    DisplayMemberBinding="{Binding ChauffeurID}" ToolTipService.ToolTip  =  "Chauffeur Id" />
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Column="1" Margin="10,0,-0.4,0" Grid.RowSpan="2">
+            <TextBlock Margin="10,20,10,10" Text="Id:" ToolTipService.ToolTip  =  "Id" />
+            <TextBlock Margin="10,5,10,11" Text="BeginDatum:" ToolTipService.ToolTip  =  "Begin datum" />
+            <TextBlock Margin="10,8,10,11" Text="EindDatum:" ToolTipService.ToolTip  =  "Eind datum" />
+            <TextBlock Margin="10,2,10,11" Text="AutoID:" ToolTipService.ToolTip  =  "Auto Id" />
+            <TextBlock Margin="10,2,9.667,11" Text="ChauffeurID:" ToolTipService.ToolTip  =  "Chauffeur Id" RenderTransformOrigin="0.465,1.26" />
+        </StackPanel>
+        <StackPanel  Grid.Column="2" Grid.RowSpan="2">
+            <TextBlock Margin="10,20,10,10" 
+                     Text="{Binding CurrentReservatie.ReservatieID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Id" />
+            <DatePicker Margin="10,0,10,10" 
+                     Text="{Binding CurrentReservatie.BeginDatum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Begin datum" />
+            <DatePicker Margin="10,0,10,10"
+                     Text="{Binding CurrentReservatie.EindDatum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Eind datum"  />
+            <TextBox Margin="10,0,10,10"
+                     Text="{Binding CurrentReservatie.AutoID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Auto Id"  />
+            <TextBox  Margin="10,0,10,5" 
+                      Text="{Binding CurrentReservatie.ChauffeurID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Login" />
+            <Button Margin="10,20,9.8,10" Content="Wijzigen" Foreground="#63625D" Background="#F1FF9C"
+                    Command="{Binding WijzigenCommand}" Height="30"  ToolTipService.ToolTip  =  "Wijzigen" />
+            <Button Name="verwijderButton" Margin="10,12,10,10" Content="Verwijderen"  Foreground="#63625D" Background="#FF423A"
+                    Command="{Binding VerwijderenCommand}" Height="30" ToolTipService.ToolTip  =  "Verwijderen"  />
+        </StackPanel>
+    </Grid>
+</Window>

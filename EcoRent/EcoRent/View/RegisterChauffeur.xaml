@@ -1,0 +1,68 @@
+﻿<Window x:Class="EcoRent.RegisterChauffeur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EcoRent"
+        mc:Ignorable="d"
+        Title="Register chauffeur" Height="450" Width="800" Icon="/Resources/icon.png">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="177*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="120*" />
+            <ColumnDefinition Width="253*" />
+            <ColumnDefinition Width="253*" />
+        </Grid.ColumnDefinitions>
+        <Button Background="Transparent" Name="backButton" HorizontalAlignment="Right" Width="46" Click="backButton_Click" Margin="0,0,13.2,359" Grid.RowSpan="2" >
+            <StackPanel>
+                <Image Source="../Resources/back_button.png" Width="44" Height="40" RenderTransformOrigin="0.536,0.5"/>
+            </StackPanel>
+        </Button>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,-0.4,-0.4">
+            <TextBlock Margin="10,20,10,10" 
+                     Text="ID" />
+            <TextBlock Margin="10,0,10,10" 
+                     Text="Voornaam" />
+            <TextBlock Margin="10,0,10,10" 
+                     Text="Naam" />
+            <TextBlock  Margin="10,0,10,10" 
+                      Text="Email" />
+            <TextBlock Margin="10,0,10,10" 
+                     Text="RijksregisterNummer" />
+            <TextBlock  Margin="10,0,10,10" 
+                      Text="Geboortedatum" />
+            <TextBlock  Margin="10,0,10,10" 
+                      Text="Jouw gebruikersnaam" />
+            <TextBlock  Margin="10,0,10,10" 
+                      Text="Passwoord" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Margin="10,20,10,8" 
+                     Text="{Binding ChauffeurID, Mode=TwoWay}" />
+            <TextBox Margin="10,0,10,8"
+                     Text="{Binding VoorNaam, Mode=TwoWay}" />
+            <TextBox Margin="10,0,10,8"  
+                     Text="{Binding Naam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox  Margin="10,0,10,8" 
+                     Text="{Binding Email, Mode=TwoWay}" />
+            <TextBox Margin="10,0,10,5" 
+                     Text="{Binding RijksregisterNummer, Mode=TwoWay}" />
+            <!--TextBox  Margin="10,0,10,8" 
+                     Text="{Binding GeboorteDatum, Mode=TwoWay}" /-->
+            <DatePicker Margin="10,0,10,5" Text="{Binding GeboorteDatum, Mode=TwoWay}"></DatePicker>
+            <TextBox  Margin="10,0,10,8" 
+                      Text="{Binding LoginNaam, Mode=TwoWay}" />
+            <TextBox  Margin="10,0,10,8" 
+                      Text="{Binding Passwoord, Mode=TwoWay}" />
+            <Button x:Name="RegistreerButton" Content="Registreer" Margin="100,10,100,10" Click="RegistreerButton_Click" Foreground="#63625D" Background="#48FF93" Height="30"/>
+        </StackPanel>
+        <Image Source="/EcoRent;component/Resources/ecorent.png" Margin="59,15,10,4.8" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="60,15,0,0" TextWrapping="Wrap" Text="Registreer je account" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+    </Grid>
+</Window>

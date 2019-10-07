@@ -1,0 +1,62 @@
+﻿<Window x:Class="EcoRent.ToevoegenAuto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EcoRent"
+        mc:Ignorable="d"
+        Title="Auto toevoegen" Height="450" Width="800" Icon="/Resources/icon.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="177*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="120*" />
+            <ColumnDefinition Width="253*" />
+            <ColumnDefinition Width="253*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,-0.4,-0.4">
+            <TextBlock Margin="10,20,10,10" 
+                     Text="Id" />
+            <TextBlock Margin="10,0,10,10" 
+                     Text="Naam" />
+            <TextBlock Margin="10,0,10,10" 
+                     Text="Bouwjaar" />
+            <TextBlock  Margin="10,0,10,10" 
+                      Text="Merk" />
+            <TextBlock Margin="10,0,10,10" 
+                     Text="Nummerplaat" />
+            <TextBlock  Margin="10,0,10,10" 
+                      Text="Vermogen" />
+            <TextBlock  Margin="10,0,10,10" 
+                      Text="Beschrijving" />
+
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Margin="10,20,10,10" 
+                     Text="{Binding AutoID, Mode=TwoWay}" />
+            <TextBox Margin="10,0,10,8"
+                     Text="{Binding Naam, Mode=TwoWay}" />
+            <TextBox Margin="10,0,10,8"  
+                     Text="{Binding Bouwjaar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox  Margin="10,0,10,8" 
+                     Text="{Binding Merk, Mode=TwoWay}" />
+            <TextBox Margin="10,0,10,8" 
+                     Text="{Binding Nummerplaat, Mode=TwoWay}" />
+            <TextBox  Margin="10,0,10,8" 
+                     Text="{Binding Vermogen, Mode=TwoWay}" />
+            <TextBox  Margin="10,0,10,8" 
+                      Text="{Binding Beschrijving, Mode=TwoWay}" />
+            <Button x:Name="ToevoegenButton" Content="Toevoegen" Margin="100,10,100,10" Click="ToevoegenButton_Click" Background="#FF48FF93" Foreground="#FF63625D" Height="30"/>
+        </StackPanel>
+        <Image Source="/EcoRent;component/Resources/ecorent.png" Margin="59,15,10,4.8" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="60,15,0,0" TextWrapping="Wrap" Text="Auto Toevoegen" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Button Background="Transparent" x:Name="backButton" HorizontalAlignment="Right" Width="46" Click="backButton_Click" Margin="0,0,13.2,359" Grid.RowSpan="2" >
+            <StackPanel>
+                <Image Source="/EcoRent;component/Resources/back_button.png" Width="44" Height="40" RenderTransformOrigin="0.536,0.5"/>
+            </StackPanel>
+        </Button>           
+    </Grid>
+</Window>

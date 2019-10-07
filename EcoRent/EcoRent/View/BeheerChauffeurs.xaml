@@ -1,0 +1,102 @@
+﻿<Window x:Class="EcoRent.BeheerChauffeurs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EcoRent"
+        xmlns:viewmodel="clr-namespace:EcoRent.ViewModel"
+        mc:Ignorable="d"
+        Title="Beheer chauffeurs" Height="450" Width="800" >
+
+    <Window.Resources>
+        <viewmodel:ChauffeurViewModel x:Key="ChauffeurViewModel"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource ChauffeurViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="550" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100*" />
+        </Grid.ColumnDefinitions>
+
+
+
+        <ListView Grid.Column="0" 
+                  ItemsSource="{Binding Chauffeurs}" 
+                  SelectionMode="Single" 
+                  SelectedItem="{Binding CurrentChauffeur}" Margin="0,0,10.4,0" Grid.RowSpan="2">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Width="20" 
+                                    Header="ID"  
+                                    DisplayMemberBinding="{Binding ChauffeurID}" ToolTipService.ToolTip  =  "Chauffeur Id"  />
+                    <GridViewColumn Width="65" 
+                                    Header="VoorNaam"
+                                    DisplayMemberBinding="{Binding VoorNaam}" ToolTipService.ToolTip  =  "Voornaam"  />
+                    <GridViewColumn Width="50" 
+                                    Header="Naam"
+                                    DisplayMemberBinding="{Binding Naam}" ToolTipService.ToolTip  =  "Naam" />
+                    <GridViewColumn Width="55" 
+                                    Header="Email"
+                                    DisplayMemberBinding="{Binding Email}" ToolTipService.ToolTip  =  "Email" />
+                    <GridViewColumn Width="65" 
+                                    Header="RijsregisterNummer"
+                                    DisplayMemberBinding="{Binding RijksregisterNummer}" ToolTipService.ToolTip  =  "Rijksregisternummer" />
+                    <GridViewColumn Width="90" 
+                                    Header="GeboorteDatum"
+                                    DisplayMemberBinding="{Binding GeboorteDatum}" ToolTipService.ToolTip  =  "Geboortedatum" />
+                    <GridViewColumn Width="70" 
+                                    Header="LoginNaam"
+                                    DisplayMemberBinding="{Binding LoginNaam}" ToolTipService.ToolTip  =  "Login naam" />
+                    <GridViewColumn Width="65" 
+                                    Header="Passwoord"
+                                    DisplayMemberBinding="{Binding Passwoord}" ToolTipService.ToolTip  =  "Paswoord" />
+                    <GridViewColumn Width="50" 
+                                    Header="Admin"
+                                    DisplayMemberBinding="{Binding Admin}" ToolTipService.ToolTip  =  "Admin"  />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Column="1" Margin="10,0,-0.4,0" Grid.RowSpan="2">
+            <TextBlock Margin="10,20,10,10" Text="Id:" ToolTipService.ToolTip  =  "Id" />
+            <TextBlock Margin="10,0,10,11" Text="Voornaam:" ToolTipService.ToolTip  =  "Voornaam" />
+            <TextBlock Margin="10,0,10,11" Text="Naam:" ToolTipService.ToolTip  =  "Naam" />
+            <TextBlock Margin="10,0,10,11" Text="Email:" ToolTipService.ToolTip  =  "Email" />
+            <TextBlock Margin="10,0,10,11" Text="Rijksregisternr:" ToolTipService.ToolTip  =  "Rijksregisternummer" />
+            <TextBlock Margin="10,0,10,11" Text="Geboortedatum:" ToolTipService.ToolTip  =  "Geboortedatum" />
+            <TextBlock Margin="10,0,10,11" Text="LoginNaam:" ToolTipService.ToolTip  =  "Login naam" />
+            <TextBlock Margin="10,0,10,11" Text="Passwoord:" ToolTipService.ToolTip  =  "Paswoord" />
+            <TextBlock Margin="10,0,10,11" Text="Admin:" ToolTipService.ToolTip  =  "Admin" />
+        </StackPanel>
+        <StackPanel  Grid.Column="2" Grid.RowSpan="2">
+            <TextBlock Margin="10,20,10,10" 
+                     Text="{Binding CurrentChauffeur.ChauffeurID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Id"  />
+            <TextBox Margin="10,0,10,10" 
+                     Text="{Binding CurrentChauffeur.VoorNaam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Voornaam" />
+            <TextBox  Margin="10,0,10,10"
+                      Text="{Binding CurrentChauffeur.Naam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Achternaam" />
+            <TextBox Margin="10,0,10,10"
+                     Text="{Binding CurrentChauffeur.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Email" />
+            <TextBox  Margin="10,0,10,5" 
+                      Text="{Binding CurrentChauffeur.RijksregisterNummer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Rijksregisternummer"  />
+            <!--<TextBox Margin="10,0,10,10" 
+                     Text="{Binding CurrentChauffeur.GeboorteDatum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
+            <DatePicker Name="geboorteDatum" SelectedDateChanged="geboorteDatum_SelectedDateChanged_SelectedDateChanged"  Margin="10,0,10,7" Text="{Binding CurrentChauffeur.GeboorteDatum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Geboortedatum"  />
+            <TextBox  Margin="10,0,10,10" 
+                      Text="{Binding CurrentChauffeur.LoginNaam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Login naam"  />
+            <TextBox  Margin="10,0,10,10" 
+                      Text="{Binding CurrentChauffeur.Passwoord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Paswoord"  />
+            <!--<TextBox  Margin="10,0,10,10" 
+                      Text="{Binding CurrentChauffeur.Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
+            <CheckBox Margin="10,0,10,10" IsChecked="{Binding CurrentChauffeur.Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip  =  "Admin"  />
+            <Button Margin="10,20,9.333,10" Content="Wijzigen" Foreground="#63625D" Background="#F1FF9C"
+                    Command="{Binding WijzigenCommand}" Height="30" ToolTipService.ToolTip  =  "Wijzigen"  />
+            <Button x:Name="verwijderButton" Click="verwijderButton_Click"  Margin="10,12,9.333,10" Content="Verwijderen"  Foreground="#63625D" Background="#FF423A"
+                    Command="{Binding VerwijderenCommand}" Height="30" HorizontalAlignment="Left" Width="124" ToolTipService.ToolTip  =  "Verwijderen" />
+        </StackPanel>
+    </Grid>
+</Window>

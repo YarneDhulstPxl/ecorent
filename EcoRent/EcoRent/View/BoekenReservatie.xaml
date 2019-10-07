@@ -1,0 +1,65 @@
+﻿<Window x:Class="EcoRent.View.BoekenReservatie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EcoRent.View"
+        xmlns:viewmodel="clr-namespace:EcoRent.ViewModel"
+        mc:Ignorable="d"
+        Title="Boeken reservatie" Height="450" Width="800" Icon="/Resources/icon.png">
+
+
+    <Window.Resources>
+        <viewmodel:AutoViewModel x:Key="AutoViewModel"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource AutoViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="563*" />
+            <ColumnDefinition Width="230*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" 
+                  Grid.Row="1"
+                  Name="reservatieList"
+                  ItemsSource="{Binding Autos}" 
+                  SelectionMode="Single" 
+                  SelectedItem="{Binding CurrentAuto}" Margin="0,3,3.2,0">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Width="60" 
+                                    Header="Auto"  
+                                    DisplayMemberBinding="{Binding Naam}" ToolTipService.ToolTip  =  "Auto"  />
+                    <GridViewColumn Width="60" 
+                                    Header="Bouwjaar"
+                                    DisplayMemberBinding="{Binding Bouwjaar}" ToolTipService.ToolTip  =  "Bouwjaar"  />
+                    <GridViewColumn Width="60" 
+                                    Header="Merk"
+                                    DisplayMemberBinding="{Binding Merk}" ToolTipService.ToolTip  =  "Merk" />
+                    <GridViewColumn Width="70" 
+                                    Header="Vermogen"
+                                    DisplayMemberBinding="{Binding Vermogen}" ToolTipService.ToolTip  =  "Vermogen"  />
+                    <GridViewColumn Width="110" 
+                                    Header="Beschrijving"
+                                    DisplayMemberBinding="{Binding Beschrijving}" ToolTipService.ToolTip  =  "Beschrijving" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock HorizontalAlignment="Left" Margin="191,10,0,10" TextWrapping="Wrap" Text="Selecter een auto en boek je reservatie" VerticalAlignment="Center" Height="40" Width="309" FontSize="16"/>
+        <Image Source="..\Resources\ecorent.png" Margin="44,10,411.2,11" />
+        <Button Name="maakReservatie" Content="Maak reservatie" Grid.Column="1" HorizontalAlignment="Left" Margin="49.8,51,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" Click="maakReservatie_Click" Foreground="#63625D" Background="#48FF93" Height="30" ToolTipService.ToolTip  =  "Maak reservatie" />
+        <Button Name="bekijkReservatie" Content="Bekijk reservaties" Grid.Column="1" HorizontalAlignment="Left" Margin="49.8,105,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" Click="bekijkReservatie_Click" Foreground="#63625D" Background="#F1FF9C" Height="30" ToolTipService.ToolTip  =  "Bekijk reservaties" />
+        <Button Background="Transparent" Name="backButton" HorizontalAlignment="Right" Width="46" Click="backButton_Click" Margin="-2,-2,519.2,2" >
+            <StackPanel>
+                <Image Source="../Resources/back_button.png" Width="44" Height="40" RenderTransformOrigin="0.536,0.5"/>
+            </StackPanel>
+        </Button>
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="EcoRent.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EcoRent"
+        mc:Ignorable="d"
+        Title="Menu" Height="450" Width="800" Icon="/Resources/icon.png">
+    <Grid>
+        <Image Source="..\Resources\ecorent.png" Margin="284,37,283.6,321" />
+        <TextBlock HorizontalAlignment="Left" Margin="219,130,0,0" TextWrapping="Wrap" Text="Log je in of maak een account aan voor een auto te reserveren" VerticalAlignment="Top"/>
+        <Button x:Name="loginButton" Content="Log in" HorizontalAlignment="Left" Margin="294,266,0,0" VerticalAlignment="Top" Width="70" Click="loginButton_Click"  Foreground="#63625D" Background="#47C5FF" Height="30"  ToolTipService.ToolTip  =  "Login" />
+        <Button x:Name="registerButton" Content="Registreer" HorizontalAlignment="Left" Margin="409,266,0,0" VerticalAlignment="Top" Width="70" Click="registerButton_Click" Foreground="#63625D" Background="#48FF93" Height="30" RenderTransformOrigin="1.13,0.538"  ToolTipService.ToolTip  =  "Registreer" />
+        <TextBlock HorizontalAlignment="Left" Margin="284,179,0,0" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="284,220,0,0" TextWrapping="Wrap" Text="Passwoord:" VerticalAlignment="Top"/>
+        <TextBox x:Name="loginText" HorizontalAlignment="Left" Height="23" Margin="359,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  ToolTipService.ToolTip  =  "Geef naam" />
+        <TextBox x:Name="passwText" HorizontalAlignment="Left" Height="23" Margin="359,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  ToolTipService.ToolTip  =  "Geef paswoord" />
+
+
+
+    </Grid>
+</Window>
